@@ -32,96 +32,128 @@
       padding: 0;
       width: 100%;
       min-height: 100%;
-      background: #120514;
       font-family: Arial, Helvetica, sans-serif;
+      background: #120514;
     }
     body {
-      overflow-x: hidden;
+      overflow: hidden;
     }
-    .hero-screen {
+    .screen {
       position: relative;
+      width: 100%;
       min-height: 100svh;
       min-height: 100vh;
-      width: 100%;
-      background-image: url('principal.jpg');
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      isolation: isolate;
     }
-    .hero-screen::after {
+    .bg {
+      position: absolute;
+      inset: 0;
+      background: url('principal.jpg') center center / cover no-repeat;
+      transform: scale(1.12);
+      filter: blur(18px) saturate(1.05) brightness(0.72);
+      z-index: -3;
+    }
+    .bg::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, rgba(18,5,20,0.04) 0%, rgba(18,5,20,0.08) 68%, rgba(18,5,20,0.28) 100%);
-      pointer-events: none;
+      background: linear-gradient(to bottom, rgba(18,5,20,0.12) 0%, rgba(18,5,20,0.28) 52%, rgba(18,5,20,0.58) 100%);
+    }
+    .visual {
+      position: relative;
+      width: 100%;
+      max-width: 520px;
+      min-height: 100svh;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 10px calc(148px + env(safe-area-inset-bottom));
+    }
+    .hero-img {
+      width: 100%;
+      max-height: calc(100svh - 170px - env(safe-area-inset-bottom));
+      object-fit: contain;
+      object-position: center center;
+      display: block;
+      border-radius: 18px;
+      box-shadow: 0 18px 50px rgba(0,0,0,0.30);
     }
     .cta-wrap {
       position: absolute;
-      left: 16px;
-      right: 16px;
-      bottom: calc(18px + env(safe-area-inset-bottom));
+      left: 14px;
+      right: 14px;
+      bottom: calc(16px + env(safe-area-inset-bottom));
       z-index: 2;
+      display: flex;
+      justify-content: center;
     }
     .cta {
       display: block;
       width: 100%;
+      max-width: 500px;
       text-decoration: none;
       color: #fff;
       text-align: center;
       border-radius: 24px;
-      background: linear-gradient(180deg, #2add6b 0%, #14b95a 100%);
+      background: linear-gradient(180deg, #2add6b 0%, #15ba5a 100%);
       border: 2px solid rgba(255,255,255,0.24);
-      box-shadow: 0 14px 35px rgba(0,0,0,0.32), 0 0 0 4px rgba(41,216,104,0.14);
+      box-shadow: 0 14px 35px rgba(0,0,0,0.34), 0 0 0 4px rgba(41,216,104,0.14);
       padding: 16px 14px 14px;
       animation: pulse 1.8s infinite;
       -webkit-tap-highlight-color: transparent;
     }
     .cta strong {
       display: block;
-      font-size: clamp(20px, 7vw, 34px);
-      line-height: 1.05;
+      font-size: clamp(18px, 6.4vw, 31px);
+      line-height: 1.04;
       font-weight: 900;
-      letter-spacing: 0.3px;
+      letter-spacing: 0.2px;
       text-transform: uppercase;
     }
     .cta small {
       display: block;
       margin-top: 7px;
-      font-size: clamp(12px, 4vw, 16px);
+      font-size: clamp(12px, 3.8vw, 16px);
       line-height: 1.2;
       font-weight: 700;
       opacity: 0.97;
     }
     @keyframes pulse {
       0% { transform: scale(1); }
-      50% { transform: scale(1.025); }
+      50% { transform: scale(1.02); }
       100% { transform: scale(1); }
     }
     @media (min-width: 768px) {
       body {
         display: flex;
         justify-content: center;
-        align-items: stretch;
       }
-      .hero-screen {
-        width: 100%;
-        max-width: 520px;
-        min-height: 100vh;
+      .visual {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+      .hero-img {
+        max-height: calc(100vh - 178px);
       }
       .cta-wrap {
         left: 20px;
         right: 20px;
         bottom: 22px;
       }
-      .cta {
-        border-radius: 28px;
-        padding: 18px 18px 16px;
-      }
     }
   </style>
 </head>
 <body>
-  <main class="hero-screen">
+  <main class="screen">
+    <div class="bg"></div>
+    <div class="visual">
+      <img class="hero-img" src="principal.jpg" alt="Trebol Mania" />
+    </div>
     <div class="cta-wrap">
       <a class="cta" id="whatsappButton" href="https://www.linkify.com.ar/api/soporte?id=qdfa92" target="_blank" rel="noopener noreferrer" aria-label="Entrar por WhatsApp">
         <strong>💬 Entrar por WhatsApp</strong>
