@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trebol Mania</title>
+  <meta name="description" content="Trebol Mania - Activos las 24 hs" />
+
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1666116987890980');
+  fbq('track', 'PageView');
+  fbq('track', 'ViewContent');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1666116987890980&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      background: #120514;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .wrap {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+    }
+    .hero {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .cta {
+      position: absolute;
+      left: 50%;
+      bottom: 7%;
+      transform: translateX(-50%);
+      width: min(72%, 420px);
+      text-decoration: none;
+      color: #fff;
+      text-align: center;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 16px 20px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #27d366 0%, #0ba34a 100%);
+      border: 3px solid rgba(255,255,255,0.25);
+      box-shadow: 0 0 0 4px rgba(39,211,102,0.18), 0 12px 28px rgba(0,0,0,0.35);
+      animation: pulse 1.6s infinite;
+      font-size: clamp(18px, 3vw, 28px);
+    }
+    .cta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: center;
+    }
+    .cta small {
+      display: block;
+      font-size: clamp(11px, 1.5vw, 14px);
+      font-weight: 700;
+      opacity: 0.95;
+      margin-top: 4px;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+    @keyframes pulse {
+      0% { transform: translateX(-50%) scale(1); }
+      50% { transform: translateX(-50%) scale(1.04); }
+      100% { transform: translateX(-50%) scale(1); }
+    }
+    @media (max-width: 700px) {
+      .wrap {
+        min-height: auto;
+      }
+      .cta {
+        bottom: 8%;
+        width: min(78%, 360px);
+        padding: 14px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <img src="principal.jpg" alt="Trebol Mania" class="hero" />
+    <a class="cta" id="whatsappButton" href="https://www.linkify.com.ar/api/soporte?id=qdfa92" target="_blank" rel="noopener noreferrer">
+      <span>💬 Entrar por WhatsApp</span>
+      <small>Tocá acá y empezá ahora</small>
+    </a>
+  </div>
+
+  <script>
+    document.getElementById('whatsappButton').addEventListener('click', function() {
+      if (typeof fbq !== 'undefined') {
+        fbq('track', 'Lead');
+      }
+    });
+  </script>
+</body>
+</html>
