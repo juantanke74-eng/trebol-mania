@@ -30,134 +30,121 @@
     html, body {
       margin: 0;
       padding: 0;
-      width: 100%;
       min-height: 100%;
+      background: #160518;
       font-family: Arial, Helvetica, sans-serif;
-      background: #120514;
     }
     body {
-      overflow: hidden;
-    }
-    .screen {
-      position: relative;
-      width: 100%;
-      min-height: 100svh;
-      min-height: 100vh;
       display: flex;
-      align-items: center;
       justify-content: center;
       overflow: hidden;
-      isolation: isolate;
     }
-    .bg {
+    .app {
+      position: relative;
+      width: 100%;
+      max-width: 480px;
+      min-height: 100svh;
+      min-height: 100vh;
+      overflow: hidden;
+      background: #160518;
+    }
+    .hero {
       position: absolute;
       inset: 0;
-      background: url('principal.jpg') center center / cover no-repeat;
-      transform: scale(1.12);
-      filter: blur(18px) saturate(1.05) brightness(0.72);
-      z-index: -3;
+      background-image: url('principal.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center top;
+      transform: scale(1.01);
     }
-    .bg::after {
+    .hero::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, rgba(18,5,20,0.12) 0%, rgba(18,5,20,0.28) 52%, rgba(18,5,20,0.58) 100%);
-    }
-    .visual {
-      position: relative;
-      width: 100%;
-      max-width: 520px;
-      min-height: 100svh;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 10px calc(148px + env(safe-area-inset-bottom));
-    }
-    .hero-img {
-      width: 100%;
-      max-height: calc(100svh - 170px - env(safe-area-inset-bottom));
-      object-fit: contain;
-      object-position: center center;
-      display: block;
-      border-radius: 18px;
-      box-shadow: 0 18px 50px rgba(0,0,0,0.30);
+      background: linear-gradient(to bottom,
+        rgba(15, 2, 16, 0.04) 0%,
+        rgba(15, 2, 16, 0.04) 58%,
+        rgba(15, 2, 16, 0.24) 74%,
+        rgba(15, 2, 16, 0.50) 100%);
     }
     .cta-wrap {
       position: absolute;
-      left: 14px;
-      right: 14px;
-      bottom: calc(16px + env(safe-area-inset-bottom));
+      left: 16px;
+      right: 16px;
+      bottom: calc(18px + env(safe-area-inset-bottom));
       z-index: 2;
-      display: flex;
-      justify-content: center;
     }
     .cta {
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
       width: 100%;
-      max-width: 500px;
       text-decoration: none;
       color: #fff;
-      text-align: center;
-      border-radius: 24px;
-      background: linear-gradient(180deg, #2add6b 0%, #15ba5a 100%);
-      border: 2px solid rgba(255,255,255,0.24);
-      box-shadow: 0 14px 35px rgba(0,0,0,0.34), 0 0 0 4px rgba(41,216,104,0.14);
-      padding: 16px 14px 14px;
-      animation: pulse 1.8s infinite;
+      padding: 18px 18px;
+      border-radius: 32px;
+      background: linear-gradient(180deg, #32e06d 0%, #18bd5a 100%);
+      border: 3px solid rgba(255,255,255,0.30);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.28);
       -webkit-tap-highlight-color: transparent;
+      animation: pulse 1.8s infinite;
     }
-    .cta strong {
+    .cta-icon,
+    .cta-arrow {
+      flex: 0 0 52px;
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.16);
+      font-size: 29px;
+      line-height: 1;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.18);
+    }
+    .cta-text {
+      flex: 1 1 auto;
+      min-width: 0;
+      text-align: left;
+    }
+    .cta-title {
       display: block;
-      font-size: clamp(18px, 6.4vw, 31px);
-      line-height: 1.04;
+      font-size: clamp(22px, 8vw, 34px);
+      line-height: 0.96;
       font-weight: 900;
-      letter-spacing: 0.2px;
       text-transform: uppercase;
+      letter-spacing: 0.2px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.16);
     }
-    .cta small {
+    .cta-sub {
       display: block;
-      margin-top: 7px;
+      margin-top: 6px;
       font-size: clamp(12px, 3.8vw, 16px);
-      line-height: 1.2;
       font-weight: 700;
-      opacity: 0.97;
+      opacity: 0.96;
     }
     @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.02); }
-      100% { transform: scale(1); }
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.018); }
     }
-    @media (min-width: 768px) {
-      body {
-        display: flex;
-        justify-content: center;
-      }
-      .visual {
-        padding-left: 14px;
-        padding-right: 14px;
-      }
-      .hero-img {
-        max-height: calc(100vh - 178px);
-      }
-      .cta-wrap {
-        left: 20px;
-        right: 20px;
-        bottom: 22px;
-      }
+    @media (max-width: 390px) {
+      .cta { padding: 16px 16px; }
+      .cta-icon, .cta-arrow { width: 48px; height: 48px; flex-basis: 48px; font-size: 26px; }
     }
   </style>
 </head>
 <body>
-  <main class="screen">
-    <div class="bg"></div>
-    <div class="visual">
-      <img class="hero-img" src="principal.jpg" alt="Trebol Mania" />
-    </div>
+  <main class="app">
+    <div class="hero"></div>
     <div class="cta-wrap">
-      <a class="cta" id="whatsappButton" href="https://www.linkify.com.ar/api/soporte?id=qdfa92" target="_blank" rel="noopener noreferrer" aria-label="Entrar por WhatsApp">
-        <strong>💬 Entrar por WhatsApp</strong>
-        <small>Tocá acá y empezá ahora</small>
+      <a class="cta" id="whatsappButton" href="https://www.linkify.com.ar/api/soporte?id=qdfa92" target="_blank" rel="noopener noreferrer" aria-label="Hablar por WhatsApp">
+        <span class="cta-icon">💬</span>
+        <span class="cta-text">
+          <span class="cta-title">Entrar por WhatsApp</span>
+          <span class="cta-sub">Tocá acá y empezá ahora</span>
+        </span>
+        <span class="cta-arrow">➜</span>
       </a>
     </div>
   </main>
