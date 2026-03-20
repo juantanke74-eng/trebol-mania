@@ -30,94 +30,105 @@
     html, body {
       margin: 0;
       padding: 0;
+      width: 100%;
+      min-height: 100%;
       background: #120514;
       font-family: Arial, Helvetica, sans-serif;
     }
     body {
-      display: flex;
-      justify-content: center;
+      overflow-x: hidden;
     }
-    .page {
-      width: 100%;
-      max-width: 700px;
-      min-height: 100vh;
-      background: #120514;
-    }
-    .hero-wrap {
+    .hero-screen {
       position: relative;
+      min-height: 100svh;
+      min-height: 100vh;
       width: 100%;
+      background-image: url('principal.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
     }
-    .hero {
+    .hero-screen::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(18,5,20,0.04) 0%, rgba(18,5,20,0.08) 68%, rgba(18,5,20,0.28) 100%);
+      pointer-events: none;
+    }
+    .cta-wrap {
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      bottom: calc(18px + env(safe-area-inset-bottom));
+      z-index: 2;
+    }
+    .cta {
       display: block;
       width: 100%;
-      height: auto;
-    }
-    .sticky-cta {
-      position: fixed;
-      left: 50%;
-      bottom: calc(14px + env(safe-area-inset-bottom));
-      transform: translateX(-50%);
-      width: min(calc(100% - 24px), 560px);
-      z-index: 50;
       text-decoration: none;
       color: #fff;
       text-align: center;
-      border-radius: 22px;
-      background: linear-gradient(180deg, #29d868 0%, #11b457 100%);
-      border: 2px solid rgba(255,255,255,0.22);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.34), 0 0 0 4px rgba(41,216,104,0.14);
-      padding: 14px 16px 13px;
-      animation: pulse 1.7s infinite;
+      border-radius: 24px;
+      background: linear-gradient(180deg, #2add6b 0%, #14b95a 100%);
+      border: 2px solid rgba(255,255,255,0.24);
+      box-shadow: 0 14px 35px rgba(0,0,0,0.32), 0 0 0 4px rgba(41,216,104,0.14);
+      padding: 16px 14px 14px;
+      animation: pulse 1.8s infinite;
       -webkit-tap-highlight-color: transparent;
     }
-    .sticky-cta strong {
+    .cta strong {
       display: block;
-      font-size: clamp(19px, 5.2vw, 30px);
+      font-size: clamp(20px, 7vw, 34px);
       line-height: 1.05;
       font-weight: 900;
       letter-spacing: 0.3px;
       text-transform: uppercase;
     }
-    .sticky-cta small {
+    .cta small {
       display: block;
-      margin-top: 6px;
-      font-size: clamp(12px, 3.5vw, 15px);
+      margin-top: 7px;
+      font-size: clamp(12px, 4vw, 16px);
       line-height: 1.2;
       font-weight: 700;
       opacity: 0.97;
-      text-transform: none;
-    }
-    .bottom-spacer {
-      height: 108px;
     }
     @keyframes pulse {
-      0% { transform: translateX(-50%) scale(1); }
-      50% { transform: translateX(-50%) scale(1.03); }
-      100% { transform: translateX(-50%) scale(1); }
+      0% { transform: scale(1); }
+      50% { transform: scale(1.025); }
+      100% { transform: scale(1); }
     }
     @media (min-width: 768px) {
-      .sticky-cta {
-        width: min(calc(100% - 40px), 470px);
-        border-radius: 999px;
-        padding: 16px 24px 14px;
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
       }
-      .bottom-spacer { height: 118px; }
+      .hero-screen {
+        width: 100%;
+        max-width: 520px;
+        min-height: 100vh;
+      }
+      .cta-wrap {
+        left: 20px;
+        right: 20px;
+        bottom: 22px;
+      }
+      .cta {
+        border-radius: 28px;
+        padding: 18px 18px 16px;
+      }
     }
   </style>
 </head>
 <body>
-  <main class="page">
-    <div class="hero-wrap">
-      <img src="principal.jpg" alt="Trebol Mania" class="hero" />
+  <main class="hero-screen">
+    <div class="cta-wrap">
+      <a class="cta" id="whatsappButton" href="https://www.linkify.com.ar/api/soporte?id=qdfa92" target="_blank" rel="noopener noreferrer" aria-label="Entrar por WhatsApp">
+        <strong>💬 Entrar por WhatsApp</strong>
+        <small>Tocá acá y empezá ahora</small>
+      </a>
     </div>
-
-    <div class="bottom-spacer"></div>
   </main>
-
-  <a class="sticky-cta" id="whatsappButton" href="https://www.linkify.com.ar/api/soporte?id=qdfa92" target="_blank" rel="noopener noreferrer" aria-label="Entrar por WhatsApp">
-    <strong>💬 Entrar por WhatsApp</strong>
-    <small>Tocá acá y empezá ahora</small>
-  </a>
 
   <script>
     document.getElementById('whatsappButton').addEventListener('click', function() {
