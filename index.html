@@ -4,114 +4,160 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Trebol Mania</title>
-  <meta name="theme-color" content="#170017" />
+  <meta name="theme-color" content="#150016" />
+
   <!-- Meta Pixel Code -->
   <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1666116987890980');
-  fbq('track', 'PageView');
-  fbq('track', 'ViewContent');
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1666116987890980');
+    fbq('track', 'PageView');
+    fbq('track', 'ViewContent');
   </script>
   <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=1666116987890980&ev=PageView&noscript=1"
+    src="https://www.facebook.com/tr?id=1666116987890980&ev=PageView&noscript=1"
   /></noscript>
   <!-- End Meta Pixel Code -->
+
   <style>
-    *{box-sizing:border-box}
-    html,body{
-      margin:0;
-      padding:0;
-      background:#170017;
-      font-family:Arial,Helvetica,sans-serif;
-      min-height:100%;
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background: #160015;
+      font-family: Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
     }
-    .wrap{
-      width:100%;
-      max-width:430px;
-      margin:0 auto;
-      background:#170017;
+    body {
+      display: flex;
+      justify-content: center;
     }
-    .hero{
-      width:100%;
-      display:block;
-      height:auto;
+    .wrap {
+      position: relative;
+      width: 100%;
+      max-width: 560px;
+      min-height: 100dvh;
+      background: #160015;
     }
-    .cta-area{
-      padding:22px 18px calc(34px + env(safe-area-inset-bottom));
-      background:#170017;
+    .hero {
+      display: block;
+      width: 100%;
+      height: auto;
     }
-    .cta{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:14px;
-      width:100%;
-      min-height:86px;
-      text-decoration:none;
-      color:#fff7d9;
-      text-align:center;
-      text-transform:uppercase;
-      font-weight:900;
-      font-size:19px;
-      line-height:1.05;
-      letter-spacing:.5px;
-      border-radius:999px;
-      padding:18px 20px;
-      background:linear-gradient(180deg,#53f48d 0%, #1ecb61 100%);
-      border:3px solid rgba(255,220,120,.45);
+
+    .floating-wa {
+      position: fixed;
+      left: 50%;
+      bottom: calc(18px + env(safe-area-inset-bottom));
+      transform: translateX(-50%);
+      width: min(88vw, 420px);
+      text-decoration: none;
+      z-index: 999;
+      animation: pulse 1.9s infinite;
+      filter: drop-shadow(0 8px 22px rgba(0,0,0,.45));
+    }
+
+    .wa-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      width: 100%;
+      min-height: 82px;
+      padding: 16px 22px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #35e56f 0%, #19c85d 100%);
+      border: 3px solid rgba(255,255,255,.28);
       box-shadow:
-        0 10px 24px rgba(0,0,0,.35),
-        inset 0 2px 0 rgba(255,255,255,.35),
-        inset 0 -4px 0 rgba(0,0,0,.16);
+        inset 0 2px 0 rgba(255,255,255,.2),
+        0 0 0 3px rgba(255, 214, 90, .28),
+        0 14px 30px rgba(0,0,0,.33);
     }
-    .cta .icon{
-      flex:0 0 48px;
-      width:48px;
-      height:48px;
-      border-radius:50%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:white;
-      font-size:26px;
-      background:rgba(255,255,255,.14);
-      box-shadow: inset 0 0 0 2px rgba(255,255,255,.25);
+
+    .wa-icon {
+      width: 56px;
+      height: 56px;
+      flex: 0 0 56px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.14);
+      display: grid;
+      place-items: center;
+      font-size: 29px;
+      color: #fff;
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,.22);
     }
-    .cta .label{
-      flex:1;
+
+    .wa-text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      line-height: 1.02;
+      color: #fff;
+      text-align: center;
     }
-    .cta .sub{
-      display:block;
-      margin-top:4px;
-      font-size:12px;
-      font-weight:700;
-      letter-spacing:.2px;
-      text-transform:none;
-      color:rgba(255,255,255,.92);
+    .wa-title {
+      font-weight: 900;
+      font-size: clamp(22px, 5.5vw, 34px);
+      letter-spacing: .4px;
+      text-transform: uppercase;
+      text-shadow: 0 2px 0 rgba(0,0,0,.18);
+      font-style: italic;
     }
-    @media (max-width:380px){
-      .cta{font-size:17px; min-height:80px;}
-      .cta .icon{width:42px;height:42px;font-size:22px;}
+    .wa-sub {
+      margin-top: 5px;
+      font-size: clamp(12px, 3vw, 17px);
+      font-weight: 700;
+      opacity: .98;
+    }
+
+    .bottom-space {
+      height: 126px;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: translateX(-50%) scale(1); }
+      50% { transform: translateX(-50%) scale(1.035); }
+    }
+
+    @media (max-width: 420px) {
+      .wa-btn {
+        min-height: 76px;
+        padding: 14px 18px;
+        gap: 12px;
+      }
+      .wa-icon {
+        width: 52px;
+        height: 52px;
+        flex-basis: 52px;
+        font-size: 27px;
+      }
+      .bottom-space { height: 118px; }
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <img src="principal.jpg" alt="Trebol Mania" class="hero" />
-    <div class="cta-area">
-      <a class="cta" href="https://www.linkify.com.ar/api/soporte?id=qdfa92" target="_blank" rel="noopener noreferrer"
-         onclick="fbq('track','Lead');">
-        <span class="icon">💬</span>
-        <span class="label">Entrar por WhatsApp<span class="sub">Tocá acá y empezá ahora</span></span>
-      </a>
+  <main class="wrap">
+    <img class="hero" src="principal.png" alt="Trebol Mania" />
+    <div class="bottom-space"></div>
+  </main>
+
+  <a class="floating-wa" href="https://www.linkify.com.ar/api/soporte?id=qdfa92" target="_blank" rel="noopener noreferrer"
+     onclick="fbq('track','Lead');">
+    <div class="wa-btn">
+      <div class="wa-icon">🟢</div>
+      <div class="wa-text">
+        <div class="wa-title">Hablar por WhatsApp</div>
+        <div class="wa-sub">Tocá acá y empezá ahora</div>
+      </div>
+      <div class="wa-icon">🟢</div>
     </div>
-  </div>
+  </a>
 </body>
 </html>
