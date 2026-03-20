@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Trebol Mania</title>
   <meta name="description" content="Trebol Mania - Activos las 24 hs" />
 
@@ -26,96 +26,98 @@
   <!-- End Meta Pixel Code -->
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
     html, body {
       margin: 0;
       padding: 0;
-      min-height: 100%;
       background: #120514;
       font-family: Arial, Helvetica, sans-serif;
     }
     body {
       display: flex;
       justify-content: center;
-      align-items: center;
     }
-    .wrap {
+    .page {
+      width: 100%;
+      max-width: 700px;
+      min-height: 100vh;
+      background: #120514;
+    }
+    .hero-wrap {
       position: relative;
       width: 100%;
-      max-width: 900px;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 0;
     }
     .hero {
+      display: block;
       width: 100%;
       height: auto;
-      display: block;
     }
-    .cta {
-      position: absolute;
+    .sticky-cta {
+      position: fixed;
       left: 50%;
-      bottom: 7%;
+      bottom: calc(14px + env(safe-area-inset-bottom));
       transform: translateX(-50%);
-      width: min(72%, 420px);
+      width: min(calc(100% - 24px), 560px);
+      z-index: 50;
       text-decoration: none;
       color: #fff;
       text-align: center;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      padding: 16px 20px;
-      border-radius: 999px;
-      background: linear-gradient(180deg, #27d366 0%, #0ba34a 100%);
-      border: 3px solid rgba(255,255,255,0.25);
-      box-shadow: 0 0 0 4px rgba(39,211,102,0.18), 0 12px 28px rgba(0,0,0,0.35);
-      animation: pulse 1.6s infinite;
-      font-size: clamp(18px, 3vw, 28px);
+      border-radius: 22px;
+      background: linear-gradient(180deg, #29d868 0%, #11b457 100%);
+      border: 2px solid rgba(255,255,255,0.22);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.34), 0 0 0 4px rgba(41,216,104,0.14);
+      padding: 14px 16px 13px;
+      animation: pulse 1.7s infinite;
+      -webkit-tap-highlight-color: transparent;
     }
-    .cta span {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      justify-content: center;
-    }
-    .cta small {
+    .sticky-cta strong {
       display: block;
-      font-size: clamp(11px, 1.5vw, 14px);
+      font-size: clamp(19px, 5.2vw, 30px);
+      line-height: 1.05;
+      font-weight: 900;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+    }
+    .sticky-cta small {
+      display: block;
+      margin-top: 6px;
+      font-size: clamp(12px, 3.5vw, 15px);
+      line-height: 1.2;
       font-weight: 700;
-      opacity: 0.95;
-      margin-top: 4px;
+      opacity: 0.97;
       text-transform: none;
-      letter-spacing: 0;
+    }
+    .bottom-spacer {
+      height: 108px;
     }
     @keyframes pulse {
       0% { transform: translateX(-50%) scale(1); }
-      50% { transform: translateX(-50%) scale(1.04); }
+      50% { transform: translateX(-50%) scale(1.03); }
       100% { transform: translateX(-50%) scale(1); }
     }
-    @media (max-width: 700px) {
-      .wrap {
-        min-height: auto;
+    @media (min-width: 768px) {
+      .sticky-cta {
+        width: min(calc(100% - 40px), 470px);
+        border-radius: 999px;
+        padding: 16px 24px 14px;
       }
-      .cta {
-        bottom: 8%;
-        width: min(78%, 360px);
-        padding: 14px 18px;
-      }
+      .bottom-spacer { height: 118px; }
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <img src="principal.jpg" alt="Trebol Mania" class="hero" />
-    <a class="cta" id="whatsappButton" href="https://www.linkify.com.ar/api/soporte?id=qdfa92" target="_blank" rel="noopener noreferrer">
-      <span>💬 Entrar por WhatsApp</span>
-      <small>Tocá acá y empezá ahora</small>
-    </a>
-  </div>
+  <main class="page">
+    <div class="hero-wrap">
+      <img src="principal.jpg" alt="Trebol Mania" class="hero" />
+    </div>
+
+    <div class="bottom-spacer"></div>
+  </main>
+
+  <a class="sticky-cta" id="whatsappButton" href="https://www.linkify.com.ar/api/soporte?id=qdfa92" target="_blank" rel="noopener noreferrer" aria-label="Entrar por WhatsApp">
+    <strong>💬 Entrar por WhatsApp</strong>
+    <small>Tocá acá y empezá ahora</small>
+  </a>
 
   <script>
     document.getElementById('whatsappButton').addEventListener('click', function() {
